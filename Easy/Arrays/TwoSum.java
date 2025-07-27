@@ -1,29 +1,42 @@
-# LeetCode-Solutions
-My solutions to LeetCode DSA problems with explanation in java
-
-  import java.util.HashMap;
-import java.util.Map;
-
+import java.util.*;
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        // We need a pair: one number from the array and another to match the target.
-
-        Map<Integer, Integer> numMap = new HashMap<>();
-
-        for (int i = 0; i < nums.length; i++) {
-            int complement = target - nums[i];
-
-            // Check if the complement is already in the map
-            if (numMap.containsKey(complement)) {
-                // get() is used to get the value stored for a specific key.
-                return new int[]{numMap.get(complement), i};
-            }
-
-            // Otherwise, store the number with its index
-            numMap.put(nums[i], i);
+      Map<Integer,Integer> map= new HashMap<>();
+       for(int i=0;i<nums.length;i++){
+      int remaining=target-nums[i];
+     
+        if(map.containsKey(remaining)){
+          return new int [] { map.get(remaining),i};
         }
-
-        // Return null if no solution (not needed in LeetCode as a solution is guaranteed)
-        return null;
-    }
+        map.put(nums[i],i);
+      }  
+      return new int[] {};
+    }
 }
+
+//see, what's happening is that we are iterating through each number. For each number, we subtract it from the target to get the remaining value. Then, we check if this remaining value already exists in the map. If it does, that means we’ve found the pair whose sum equals the target, and we return their indices. If it doesn’t, we store the current number along with its index in the map, so we can use it later if needed.
+
+//Step 1: i = 0
+//nums[i] = 2
+
+//remaining = 9 - 2 = 7
+
+//Does the map contain 7? ❌ No
+
+//So, add this number and index to the map:
+
+//map.put(2, 0); // map = {2: 0}
+
+//Step 2: i = 1
+//nums[i] = 7
+
+//remaining = 9 - 7 = 2
+
+//Does the map contain 2? ✅ Yes!
+
+//We earlier stored 2 at index 0.
+
+//So, we return:
+
+//return new int[] { map.get(2), 1 };
+// return [0, 1]
