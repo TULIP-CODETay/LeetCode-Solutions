@@ -18,20 +18,14 @@ class Solution {
     }
 }
 
- //       Now loop runs:
-
-   //     i = 1 → nums[1] = 1 → nums[1] == nums[0] → ❌ skip (duplicate)
-
-     //   i = 2 → nums[2] = 2 → nums[2] != nums[0] → ✅ new number
-
-      //  nums[1] = 2
-
-     //   k = 2
-
-    //    i = 3 → nums[3] = 2 → nums[3] == nums[1] → ❌ skip
-
-      //   i = 4 → nums[4] = 3 → nums[4] != nums[1] → ✅ new number
-
-     //   nums[2] = 3
-
-     //    k = 3
+ //🔁 Loop from i = 1 to i = 9:
+//i	  nums[i]   	nums[k-1]	    Action	           New nums	                     k
+//1   	0	           0	Duplicate → skip	         [0,0,1,1,1,2,2,3,3,4]   	1
+//2	   1	           0	New → nums[1] = 1	         [0,1,1,1,1,2,2,3,3,4]	    2
+//3	   1	           1	Duplicate → skip	         [0,1,1,1,1,2,2,3,3,4]  	2
+//4	   1	           1	Duplicate → skip	         [0,1,1,1,1,2,2,3,3,4]  	2
+//5	   2	           1	New → nums[2] = 2	         [0,1,2,1,1,2,2,3,3,4]	    3
+//6	   2	           2	Duplicate → skip	         [0,1,2,1,1,2,2,3,3,4]	    3
+//7	   3	           2	New → nums[3] = 3	         [0,1,2,3,1,2,2,3,3,4]	    4
+//8	   3	           3	Duplicate → skip	         [0,1,2,3,1,2,2,3,3,4]	    4
+//9	   4	           3	New → nums[4] = 4	         [0,1,2,3,4,2,2,3,3,4]	    5
